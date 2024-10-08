@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "vue"
+  },
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
