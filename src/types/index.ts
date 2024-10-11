@@ -16,3 +16,15 @@ export type Login = {
   name: string;
   code: Code[];
 };
+
+export type TLink = {
+  id: string;
+  website: string;
+  checked: boolean;
+  tag: TTag[];
+};
+
+export type TTag = {
+  id: string;
+  name: string;
+};

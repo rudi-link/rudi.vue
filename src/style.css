@@ -96,13 +96,13 @@ button:focus-visible {
 
 @keyframes blip {
   0%{
-    fill: #0d1acc;
+    fill: #6365f1;
   }
   50%{
-    fill: #ccbf0d;
+    fill: #10b981;
   }
   100%{
-    fill: #0da3cc;
+    fill: #6365f1;
   }
 }
 

@@ -6,7 +6,7 @@ const load = globalLoad()
 </script>
 
 <template>
-  <div class="w-screen h-screen bg-slate-50 text-black">
+  <div class="w-screen h-screen bg-slate-50 text-black overflow-hidden">
     <LoadGlobal v-if="load.isLoad"/>
     <RouterView/>
   </div>

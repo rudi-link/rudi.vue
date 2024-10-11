@@ -11,7 +11,7 @@ const {withProfile = false} = defineProps<{withProfile?: boolean}>()
 </script>
 
 <template>
-    <div v-if="authStore.user" class="flex flex-col w-full h-full overflow-y-auto">
+    <div v-if="authStore.user" class="flex flex-col w-full h-full">
         <header class="flex flex-col gap-7 w-full h-max py-1 px-4 bg-neutral-100 border-b shadow-lg">
             <div class="flex justify-between w-full h-max">
                 <div class="flex items-center gap-4">
@@ -46,21 +46,20 @@ const {withProfile = false} = defineProps<{withProfile?: boolean}>()
             </div>
         </header>
 
-        <div class="flex w-full h-full bg-white">
+        <div class="flex sm:flex-row flex-col-reverse w-full h-full bg-white">
             <Nav />
             <main class="flex justify-between gap-6 w-full h-full p-5 overflow-y-auto">
                 <slot name="main"></slot>
                 <slot name="side" v-if="!withProfile"></slot>
                 
-                <div v-if="withProfile" class="hidden md:flex flex-col gap-2 w-max h-max">
-                    <button
-                        class="p-2 text-center rounded-t-2xl rounded-b-xl bg-indigo-700/70 text-white transition-all bliphov hover:scale-x-90 hover:rounded-full">
-                        Explore our app
+                <div v-if="withProfile" class="hidden md:flex flex-col gap-1 w-max h-max">
+                    <button class="p-[0.3rem] text-center rounded-t-2xl rounded-b-xl bg-indigo-700/70 text-white transition-all">
+                        edit profile
                     </button>
                     <div
                         class="w-max h-max  border-slate-300 p-1 rounded-lg bg-gradient-to-br from-neutral-100 via-white to-neutral-100">
                         <div
-                            class="flex flex-col gap-5 items-center py-4 px-4 w-max min-w-36 h-max min-h-10  bg-white rounded-lg">
+                            class="flex flex-col gap-5 items-center py-4 px-4 w-max min-w-36 h-max min-h-10  bg-indigo-50 rounded-lg">
                             <div class="flex flex-col items-center gap-3 w-max">
                                 <img :src="authStore?.user?.avatar" alt="" class="w-16 h-16 rounded-full">
                                 <p class="text-sm font-mono font-bold text-neutral-700">{{ authStore?.user?.name }}</p>
