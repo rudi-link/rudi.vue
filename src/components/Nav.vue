@@ -1,5 +1,8 @@
 <script setup>
-import { HomeIcon, BellIcon } from '@heroicons/vue/24/solid';
+import { HomeIcon, BellIcon, ArrowUpRightIcon } from '@heroicons/vue/24/solid';
+import useLocalStorage from '../composables/useLocalStorage';
+
+const navTheme= useLocalStorage<'center' | 'right'>('nav-theme')
 </script>
 
 <template>
@@ -31,9 +34,9 @@ import { HomeIcon, BellIcon } from '@heroicons/vue/24/solid';
             <RouterLink to="" class="px-3 py-3 bg-white rounded-xl shadow">
                 <HomeIcon class="w-4 h-4 fill-orange-500/70" />
             </RouterLink>
-            <RouterLink to="" class="px-3 py-3 bg-white rounded-xl shadow">
-                <BellIcon class="w-4 h-4 fill-indigo-500/70" />
-            </RouterLink>
+            <button class="px-3 py-3 bg-white rounded-xl shadow">
+                <ArrowUpRightIcon class="w-4 h-4 fill-indigo-500/70" />
+            </button>
         </div>
     </nav>
 </template>

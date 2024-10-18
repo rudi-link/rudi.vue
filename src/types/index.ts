@@ -28,3 +28,17 @@ export type TTag = {
   id: string;
   name: string;
 };
+
+
+export type TLinkDt = {
+  id: string;
+  website: string;
+  checked: boolean;
+  tag: TTagDt[];
+};
+
+export type TTagDt = {
+  id: number;
+  name: string;
+  click: {id: string, createdAt: Date}[]
+};

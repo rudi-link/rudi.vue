@@ -6,6 +6,9 @@ import { useQueryParams } from "../composables/useQueryParams";
 import LinkupDetails from "./LinkupDetails.vue";
 import { ArrowUpRightIcon, ClipboardDocumentCheckIcon } from "@heroicons/vue/24/solid";
 import { api } from "../api";
+import useCopy from "../composables/useCopy";
+
+const {copy} = useCopy()
 
 const { getQueryParam, removeQueryParam } = useQueryParams();
 const links = ref<TLink[]>([]);
@@ -32,14 +35,14 @@ onMounted(async () => {
         :class="{ 'border-indigo-600': !link.checked }"
       >
         <img
-          src="/mr.js.png"
+          :src="`https://api.dicebear.com/9.x/identicon/svg?seed=${link.id}`"
           alt=""
-          class="w-full h-full rounded-full border-4 border-white"
+          class="w-full h-full rounded-full border-2 border-white"
         />
       </div>
       <div class="flex flex-col gap-[0.3rem]">
-        <RouterLink :to="`?id=${link.id}`" class="hover:text-indigo-700 hover:underline underline-offset-4">{{ link.website.split("://")[1].split(".")[0] }}</RouterLink>
-        <div title="copy" class="flex items-center gap-3 italic text-sm text-neutral-700 hover:scale-x-90 transition-all">{{ `${api}/${link.id}` }} <ClipboardDocumentCheckIcon class="w-4 h-4"/></div>
+        <RouterLink :to="`/linkup/${link.id}`" class="hover:text-indigo-700 hover:underline underline-offset-4">{{ link.website.split("://")[1].split(".")[0] }}</RouterLink>
+        <div @click="copy(`${api}/${link.id}`)" title="copy" class="flex items-center gap-3 italic text-sm text-neutral-700 hover:scale-x-90 transition-all">{{ `${api}/${link.id}` }} <ClipboardDocumentCheckIcon class="w-4 h-4"/></div>
       </div>
     </div>
   </div>
