@@ -12,13 +12,11 @@ const idTag = computed(() => Number(getQueryParam("tag")));
 
 const { id } = defineProps<{ id: string }>();
 
-const link = ref<TLinkDt>();
-const tag = ref<any>();
+const link = ref<TLinkDt>()
 
 onMounted(async () => {
   const res = await getLink<TLinkDt>(id);
   link.value = res;
-  tag.value = link.value?.tag.find((t) => t.id === idTag.value);
 });
 </script>
 
@@ -26,7 +24,8 @@ onMounted(async () => {
   <Layout with-profile>
     <template #main>
       <ClickDetails
-        :tag="tag"
+        :id-tag="idTag"
+        :link="link"
         :cancel="() => removeQueryParam('tag')"
         v-if="Boolean(idTag)"
       />

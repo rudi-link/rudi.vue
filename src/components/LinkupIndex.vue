@@ -24,7 +24,7 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-wrap items-start gap-4 w-full h-max">
-    <linkup-details :id="linkId" :cancel="() => removeQueryParam('id')" />
+    <!-- <linkup-details :id="linkId" :cancel="() => removeQueryParam('id')" /> -->
     <div
       v-for="link in links"
       :key="link.id"
