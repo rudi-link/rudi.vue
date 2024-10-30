@@ -48,7 +48,7 @@ authStore.authenticate()
                             </div>
                         </div>
                     </RouterLink>
-                    <RouterLink
+                    <RouterLink to="/analytic"
                         class="flex flex-col md:w-[35%] w-full h-44 hover:border-none rounded-lg shadow hover:shadow-lg transition-all bg-indigo-50 overflow-hidden cardo">
                         <div class="flex items-center justify-center gap-8 w-full h-full">
                             <div class="w-8 h-8 p-2 rounded-full shadow-sm bg-emerald-300/50">

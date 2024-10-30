@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import Layout from "../components/Layout.vue";
 import LinkupIndex from "../components/LinkupIndex.vue";
 import { useQueryParams } from "../composables/useQueryParams";
 import NewLinkup from "../components/NewLinkup.vue";
+import useAuth from "../store/auth";
 
-const service = ref(1);
+const authStore = useAuth()
+authStore.authenticate()
+
 const { getQueryParam } = useQueryParams();
 const new_ = computed(() => getQueryParam("new"));
 </script>
@@ -21,12 +24,10 @@ const new_ = computed(() => getQueryParam("new"));
             class="flex flex-col flex-grow flex-wrap gap-5 sm:max-w-[60%] w-full"
           >
             <p class="text-2xl font-bold leading-8">
-              Lorem ipsum dolor sit amet <br />
-              consectetur adipisicing.
+              LinkUp
             </p>
             <p class="leading-7">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis
-              animiiure maiores et.
+              Feature taht allow you to create a link from another, <br> see how many click on it
             </p>
             <div class="flex gap-4" v-if="!new_">
               <RouterLink
@@ -35,9 +36,9 @@ const new_ = computed(() => getQueryParam("new"));
                 >new link</RouterLink
               >
               <RouterLink
-                to="?new=package"
+                to="/"
                 class="py-2 px-5 rounded-full font-bold text-sm border border-white"
-                >new package</RouterLink
+                >back</RouterLink
               >
             </div>
             <new-linkup v-if="new_" />
