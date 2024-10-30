@@ -1,24 +1,82 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { TLinkDt, TTagDt } from '../types';
+import { computed } from "vue";
+import { TLinkDt, TTagDt } from "../types";
+import { CChartLine } from "@coreui/vue-chartjs";
+import useCopy from "../composables/useCopy";
+import { api } from "../api";
+import { ClipboardDocumentCheckIcon } from "@heroicons/vue/24/solid";
+import { formatdAte } from "../utils";
+// import ApexCharts from 'apexcharts'
+// import Chart from "./Chart.vue";
 
+const { copy } = useCopy();
 
 const { link, idTag, cancel } = defineProps<{
   link: TLinkDt | undefined;
-  idTag: number,
+  idTag: number;
   cancel: () => void;
 }>();
 
-const tag  = computed<TTagDt | undefined>(() => link?.tag.find((t) => t.id === idTag))
+const tag = computed<TTagDt | undefined>(() =>
+  link?.tag.find((t) => t.id === idTag)
+);
+
+console.log(tag.value);
 </script>
 
 <template>
   <div
     class="absolute flex justify-center w-full h-full inset-0 backdrop-blur-sm bg-black/20 overflow-hidden"
   >
-    <div @click="cancel" class="w-[40rem] h-full p-3 side">
-      <div class="w-full h-full rounded-lg bg-white">
-        {{ JSON.stringify(tag) }}
+    <div class="w-[40rem] h-full p-3 side">
+      <div class="flex flex-col gap-7 w-full h-full p-5 rounded-lg bg-white">
+
+        <div class="w-full text-center">
+          <button @click="cancel()" class="w-max text-3xl font-mono font-bold">✖️</button>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-2 w-full">
+          <h2 class="font-mono">
+            {{ link?.website.split("://")[1].split(".")[0] }}|
+            <span class="font-bold text-[#4f1575ab]">{{ tag?.name }}</span> 🌐
+          </h2>
+          <button
+            :title="`Copy: ${api}/${link?.id}@${tag?.id}`"
+            @click="copy(`${api}/${link?.id}@${tag?.id}`)"
+            class="flex items-center gap-3 italic text-sm text-neutral-700 hover:scale-x-90 transition-all"
+          >
+            {{ `${api}/${link?.id}@${tag?.id}`.slice(0, 20) }}
+            <ClipboardDocumentCheckIcon class="w-5 h-5" />
+          </button>
+        </div>
+
+        <h2 class="text-center text-2xl font-mono">
+          {{ tag?.click.length }} clicks
+        </h2>
+
+        <div class="flex flex-wrap gap-3">
+          <div v-for="clk in tag?.click" :key="clk.id" class="w-full sm:w-max h-max border p-3 rounded shadow">
+            🖱️ {{ formatdAte(clk.createdAt) }}
+          </div>
+        </div>
+
+        <!-- <CChartLine
+          type="line"
+          :wrapper="false"
+          :data="{
+            labels: tag?.click.map(clk => ''),
+            datasets: [
+              {
+                label: 'Click',
+                backgroundColor: 'rgba(151, 187, 205, 0.2)',
+                borderColor: 'rgba(151, 187, 205, 1)',
+                pointBackgroundColor: 'rgba(151, 187, 205, 1)',
+                pointBorderColor: '#fff',
+                data: [50, 12, 28, 29, 7, 25, 100],
+              },
+            ],
+          }"
+        /> -->
       </div>
     </div>
   </div>

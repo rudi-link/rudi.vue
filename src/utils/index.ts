@@ -4,17 +4,17 @@ export function token() {
   };
 }
 
-export function getLocation() : { latitude: number; longitude: number } | null {
-  let location: { latitude: number; longitude: number } | null = null
+export function formatdAte(datetime: string) {
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      ({ coords }) => {
-        location = coords;
-      },
-      (err) => console.error(err)
-    )
-  }
+  const dateNode = new Date(datetime);
 
-  return location || { latitude: 1, longitude: 1 }
+  const dateDetails = {
+    years: dateNode.getFullYear(),
+    month: dateNode.getMonth(),
+    date: dateNode.getDate(),
+    hour: dateNode.getHours(),
+    minutes: dateNode.getMinutes(),
+  };
+
+  return `${dateDetails.years}-${dateDetails.month}-${dateDetails.date} ${dateDetails.hour}:${dateDetails.minutes}`;
 }

@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import Nav from "../components/Nav.vue";
+import { useQueryParams } from "../composables/useQueryParams";
 import useAuth from "../store/auth";
 import { RocketLaunchIcon } from "@heroicons/vue/24/solid";
+import Profile from "./modals/Profile.vue";
+
+const { getQueryParam } = useQueryParams();
+
+const edit = getQueryParam("edit");
 
 const authStore = useAuth()
 authStore.authenticate()
@@ -45,7 +51,7 @@ const {withProfile = false} = defineProps<{withProfile?: boolean}>()
                 </div>
             </div>
         </header>
-
+        <Profile v-if="Boolean(edit)"/>
         <div class="flex sm:flex-row flex-col-reverse w-full h-full bg-white">
             <Nav />
             <main class="flex justify-between gap-6 w-full h-full p-5 overflow-y-auto">
@@ -53,11 +59,11 @@ const {withProfile = false} = defineProps<{withProfile?: boolean}>()
                 <slot name="side" v-if="!withProfile"></slot>
                 
                 <div v-if="withProfile" class="hidden md:flex flex-col gap-1 w-max h-max">
-                    <button class="p-[0.3rem] text-center rounded-t-2xl rounded-b-xl bg-indigo-700/70 text-white transition-all">
+                    <RouterLink to="?edit=profile" class="p-[0.5rem] text-center rounded-t-2xl rounded-b-xl bg-[#4c1b6dab] text-white hover:animate-pulse transition-all">
                         edit profile
-                    </button>
-                    <div
-                        class="w-max h-max  border-slate-300 p-1 rounded-lg bg-gradient-to-br from-neutral-100 via-white to-neutral-100">
+                    </RouterLink>
+                    <!-- <div
+                        class="w-max h-max  border-slate-300 p-[0.15rem] rounded-lg bg-gradient-to-br from-white via-white to-[#3e1758ab]"> -->
                         <div
                             class="flex flex-col gap-5 items-center py-4 px-4 w-max min-w-36 h-max min-h-10  bg-indigo-50 rounded-lg">
                             <div class="flex flex-col items-center gap-3 w-max">
@@ -79,7 +85,7 @@ const {withProfile = false} = defineProps<{withProfile?: boolean}>()
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <!-- </div> -->
                 </div>
 
             </main>

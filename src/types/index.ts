@@ -40,5 +40,5 @@ export type TLinkDt = {
 export type TTagDt = {
   id: number;
   name: string;
-  click: {id: string, createdAt: Date}[]
+  click: {id: string, createdAt: string}[]
 };
