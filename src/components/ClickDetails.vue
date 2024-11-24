@@ -32,7 +32,7 @@ console.log(tag.value);
       <div class="flex flex-col gap-7 w-full h-full p-5 rounded-lg bg-white">
 
         <div class="w-full text-center">
-          <button @click="cancel()" class="w-max text-3xl font-mono font-bold">✖️</button>
+          <button @click="cancel()">✖️</button>
         </div>
 
         <div class="flex flex-wrap items-center justify-between gap-2 w-full">

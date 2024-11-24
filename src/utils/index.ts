@@ -1,6 +1,6 @@
 export function token() {
   return {
-    Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
   };
 }
 

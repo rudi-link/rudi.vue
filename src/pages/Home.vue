@@ -3,7 +3,6 @@ import Layout from "../components/Layout.vue";
 import Nav from "../components/Nav.vue";
 import useAuth from "../store/auth";
 import { RocketLaunchIcon } from "@heroicons/vue/24/solid";
-import { HomeIcon, BellIcon } from "@heroicons/vue/24/solid";
 
 const authStore = useAuth()
 authStore.authenticate()

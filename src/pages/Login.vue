@@ -23,7 +23,7 @@ const submit = async () => {
 
     try {
         const { token } = await login({ code: code.value, name: name.value })
-        sessionStorage.setItem('token', token)
+        localStorage.setItem('token', token)
 
         code.value = []
         name.value = ''

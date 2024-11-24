@@ -27,7 +27,7 @@ const new_ = computed(() => getQueryParam("new"));
               LinkUp
             </p>
             <p class="leading-7">
-              Feature taht allow you to create a link from another, <br> see how many click on it
+              Feature that allow you to create a link from another, <br> see how many click on it
             </p>
             <div class="flex gap-4" v-if="!new_">
               <RouterLink
@@ -50,7 +50,7 @@ const new_ = computed(() => getQueryParam("new"));
         </div>
 
         <div v-if="!new_" class="flex flex-col gap-5 w-full h-max">
-          <linkup-index v-if="service === 1" />
+          <linkup-index />
         </div>
       </div>
     </template>
