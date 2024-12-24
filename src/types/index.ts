@@ -50,4 +50,7 @@ export type TAnalytic = {
   checked: boolean;
   createdAt: string;
   updatedAt: string;
+  visiter: {
+    createdAt: string;
+  }[]
 }

@@ -21,7 +21,7 @@ onMounted(async () => {
       :class="{'bg-[#75b5ff94]': !vs.checked}"
     >
       <div class="flex flex-col gap-[0.3rem]">
-        <RouterLink :to="`/linkup/${vs.id}`" class="hover:text-indigo-700 hover:underline underline-offset-4">{{ vs.name }}</RouterLink>
+        <RouterLink :to="`/analytic/${vs.id}`" class="hover:text-indigo-700 hover:underline underline-offset-4">{{ vs.name }}</RouterLink>
       </div>
     </div>
   </div>

@@ -3,8 +3,8 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 </script>
 
 <template>
-  <div class="month-labels">
-    <span v-for="month in months" :key="month" class="month-label">
+  <div class="month-labels w-full">
+    <span v-for="month in months" :key="month" class="month-label flex-1">
       {{ month }}
     </span>
   </div>
@@ -20,7 +20,7 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 }
 
 .month-label {
-  width: calc((10px + 2px) * 4.345); /* Approximate width for each month */
+  /* width: calc((10px + 2px) * 4.345); Approximate width for each month */
   text-align: left;
 }
 </style>

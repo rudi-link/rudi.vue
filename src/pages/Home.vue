@@ -1,4 +1,4 @@
-<script setup>
+<script setup lan="ts">
 import Layout from "../components/Layout.vue";
 import Nav from "../components/Nav.vue";
 import useAuth from "../store/auth";

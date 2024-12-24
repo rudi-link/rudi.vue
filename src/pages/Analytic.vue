@@ -24,12 +24,10 @@ authStore.authenticate()
                 class="flex flex-col flex-grow flex-wrap gap-5 sm:max-w-[60%] w-full"
               >
                 <p class="text-2xl font-bold leading-8">
-                  Lorem ipsum dolor sit amet <br />
-                  consectetur adipisicing.
+                  Trojan horse
                 </p>
                 <p class="leading-7">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis
-                  animiiure maiores et.
+                  Integrate in your app some code, to analyse all visitor and some else
                 </p>
                 <div class="flex gap-4" v-if="!new_">
                   <RouterLink

@@ -14,7 +14,7 @@ const navTheme= useLocalStorage<'center' | 'right'>('nav-theme')
             <RouterLink to="/linkup" class="px-3 py-3 bg-white rounded-xl shadow" title="linkup">
                 <BellIcon class="w-4 h-4 fill-emerald-500/60" />
             </RouterLink>
-            <RouterLink to="" class="px-3 py-3 bg-white rounded-xl shadow">
+            <RouterLink to="/analytic" class="px-3 py-3 bg-white rounded-xl shadow">
                 <HomeIcon class="w-4 h-4 fill-orange-500/60" />
             </RouterLink>
             <RouterLink to="" class="px-3 py-3 bg-white rounded-xl shadow">

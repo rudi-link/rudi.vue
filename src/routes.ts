@@ -4,6 +4,7 @@ import Home from "./pages/Home.vue";
 import Linkup from "./pages/Linkup.vue";
 import LinkupDetails from "./pages/LinkupDetails.vue";
 import Analytic from "./pages/Analytic.vue";
+import AnalyticDetails from "./pages/AnalyticDetails.vue";
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -30,7 +31,7 @@ export const routes: RouteRecordRaw[] = [
   },
   {
     path: "/analytic/:id",
-    component: Analytic,
+    component: AnalyticDetails,
     props: true,
   },
   {

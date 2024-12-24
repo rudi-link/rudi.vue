@@ -23,7 +23,6 @@ const tag = computed<TTagDt | undefined>(() =>
   link?.tag.find((t) => t.id === idTag)
 );
 
-console.log(tag.value);
 </script>
 
 <template>

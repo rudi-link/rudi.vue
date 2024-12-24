@@ -7,7 +7,7 @@ import { generateDatesForYear, getContributionLevel, getAvailableYears } from '.
 import type { Contribution, ContributionDay } from '../types/contribution';
 
 const props = defineProps<{
-  contributions: any[]
+  contributions: { createdAt: string; }[]
 }>();
 
 const selectedYear = ref(new Date().getFullYear());
@@ -79,24 +79,27 @@ const totalContributions = computed(() =>
         :years="availableYears"
       />
     </div>
-    <MonthLabels />
     <div class="graph-container">
       <div class="weekday-labels">
         <span>Mon</span>
         <span>Wed</span>
         <span>Fri</span>
       </div>
-      <div class="weeks-container">
-        <div v-for="(week, weekIndex) in weeks" :key="weekIndex" class="week">
-          <ContributionCell
-            v-for="day in week"
-            :key="day.date.toISOString()"
-            :level="day.level"
-            :count="day.count"
-            :date="day.date"
-          />
-        </div>
-      </div>
+      <div class="w-full overflow-x-auto">
+        <div class="flex flex-col w-max">
+          <MonthLabels />
+          <div class="weeks-container">
+            <div v-for="(week, weekIndex) in weeks" :key="weekIndex" class="week">
+              <ContributionCell
+                v-for="day in week"
+                :key="day.date.toISOString()"
+                :level="day.level"
+                :count="day.count"
+                :date="day.date"
+              />
+            </div>
+        </div></div>
+    </div>
     </div>
   </div>
 </template>

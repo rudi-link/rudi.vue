@@ -29,7 +29,6 @@ const tooltipText = computed(() => {
   height: 10px;
   margin: 2px;
   border-radius: 2px;
-  background-color: #161b22;
   cursor: pointer;
 }
 
