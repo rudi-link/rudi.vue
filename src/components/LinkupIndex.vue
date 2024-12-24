@@ -20,7 +20,7 @@ onMounted(async () => {
 <template>
   <div class="flex flex-wrap items-start gap-4 w-full h-max">
     <div
-      v-for="link in links"
+      v-for="link in links.reverse()"
       :key="link.id"
       class="flex items-center gap-5 border w-full sm:w-max h-max py-2 px-3 rounded-xl bg-indigo-50 transition-all cursor-pointer shadow"
     >

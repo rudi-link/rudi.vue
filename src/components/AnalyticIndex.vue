@@ -15,7 +15,7 @@ onMounted(async () => {
 <template>
   <div class="flex flex-wrap items-start gap-4 w-full h-max">
     <div
-      v-for="vs in visite"
+      v-for="vs in visite.reverse()"
       :key="vs.id"
       class="flex items-center gap-5 border w-full sm:w-max h-max py-4 px-3 rounded-xl bg-indigo-50 transition-all cursor-pointer shadow"
       :class="{'bg-[#75b5ff94]': !vs.checked}"
