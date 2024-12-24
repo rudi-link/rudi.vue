@@ -2,10 +2,12 @@
 import { computed } from "vue";
 import { TLinkDt, TTagDt } from "../types";
 import { CChartLine } from "@coreui/vue-chartjs";
+import Contribution from "./Contribution.vue";
 import useCopy from "../composables/useCopy";
 import { api } from "../api";
 import { ClipboardDocumentCheckIcon } from "@heroicons/vue/24/solid";
 import { formatdAte } from "../utils";
+import ContributionGraph from "./ContributionGraph.vue";
 // import ApexCharts from 'apexcharts'
 // import Chart from "./Chart.vue";
 
@@ -43,22 +45,18 @@ console.log(tag.value);
           <button
             :title="`Copy: ${api}/${link?.id}@${tag?.id}`"
             @click="copy(`${api}/${link?.id}@${tag?.id}`)"
-            class="flex items-center gap-3 italic text-sm text-neutral-700 hover:scale-x-90 transition-all"
+            class="flex items-center gap-3 italic text-sm text-[#4f1575ab] hover:scale-x-90 transition-all"
           >
-            {{ `${api}/${link?.id}@${tag?.id}`.slice(0, 20) }}
-            <ClipboardDocumentCheckIcon class="w-5 h-5" />
+            <ClipboardDocumentCheckIcon class="w-6 h-6" />
           </button>
         </div>
-
-        <h2 class="text-center text-2xl font-mono">
-          {{ tag?.click.length }} clicks
-        </h2>
-
-        <div class="flex flex-wrap gap-3">
+        <ContributionGraph :contributions="tag?.click" />
+        <!-- <Contribution :contributions="tag?.click"/> -->
+        <!-- <div class="flex flex-wrap gap-3">
           <div v-for="clk in tag?.click" :key="clk.id" class="w-full sm:w-max h-max border p-3 rounded shadow">
             🖱️ {{ formatdAte(clk.createdAt) }}
           </div>
-        </div>
+        </div> -->
 
         <!-- <CChartLine
           type="line"

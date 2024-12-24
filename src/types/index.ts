@@ -42,3 +42,12 @@ export type TTagDt = {
   name: string;
   click: {id: string, createdAt: string}[]
 };
+
+export type TAnalytic = {
+  id: string;
+  name: string;
+  userId: string;
+  checked: boolean;
+  createdAt: string;
+  updatedAt: string;
+}

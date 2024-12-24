@@ -4,6 +4,7 @@ import Layout from '../components/Layout.vue';
 import { useQueryParams } from '../composables/useQueryParams';
 import useAuth from '../store/auth';
 import NewAnalytic from '../components/NewAnalytic.vue';
+import AnalyticIndex from '../components/AnalyticIndex.vue';
 
 const { getQueryParam } = useQueryParams();
 const new_ = computed(() => getQueryParam("new"));
@@ -34,13 +35,11 @@ authStore.authenticate()
                   <RouterLink
                     to="?new=link"
                     class="py-2 px-5 border rounded-full font-bold text-sm bg-white text-indigo-700 hover:bg-transparent hover:text-white hover:border border-white transition-all"
-                    >new project</RouterLink
-                  >
+                  >new project</RouterLink>
                   <RouterLink
                     to="/"
                     class="py-2 px-5 rounded-full font-bold text-sm border border-white"
-                    >back</RouterLink
-                  >
+                  >back</RouterLink>
                 </div>
                 <new-analytic v-if="new_" />
               </div>
@@ -50,9 +49,9 @@ authStore.authenticate()
               </div>
             </div>
     
-            <!-- <div v-if="!new_" class="flex flex-col gap-5 w-full h-max">
-              <linkup-index v-if="service === 1" />
-            </div> -->
+            <div v-if="!new_" class="flex flex-col gap-5 w-full h-max">
+              <analytic-index />
+            </div>
           </div>
         </template>
       </Layout>
