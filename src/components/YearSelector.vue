@@ -14,23 +14,23 @@ const isOpen = ref(false);
 
 function selectYear(year: number) {
   emit('update:modelValue', year);
-  isOpen.value = false; // Fix: Changed from isOpen.ref to isOpen.value
+  isOpen.value = false;
 }
 </script>
 
 <template>
   <div class="year-selector fixed ">
     <button @click="isOpen = !isOpen" class="year-button">
-      {{ modelValue }}
+      {{ props.modelValue }}
       <span class="arrow" :class="{ 'arrow-up': isOpen }">▼</span>
     </button>
     <div v-if="isOpen" class="year-dropdown">
       <button
-        v-for="year in years"
+        v-for="year in props.years"
         :key="year"
         @click="selectYear(year)"
         class="year-option"
-        :class="{ active: year === modelValue }"
+        :class="{ active: year === props.modelValue }"
       >
         {{ year }}
       </button>
