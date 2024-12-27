@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+// @ts-ignore
 import Layout from '../components/Layout.vue';
 import { useQueryParams } from '../composables/useQueryParams';
 import useAuth from '../store/auth';
+// @ts-ignore
 import NewAnalytic from '../components/NewAnalytic.vue';
+// @ts-ignore
 import AnalyticIndex from '../components/AnalyticIndex.vue';
 
 const { getQueryParam } = useQueryParams();
@@ -16,7 +19,7 @@ authStore.authenticate()
 <template>
     <Layout with-profile>
         <template #main>
-          <div class="flex flex-col flex-grow gap-10 h-full">
+          <div class="flex flex-col flex-grow gap-10 h-full md:pr-10">
             <div
               class="flex justify-between items-center w-full h-max py-5 px-6 rounded-xl bg-[#2e6b9cfa] text-white"
             >
@@ -43,7 +46,7 @@ authStore.authenticate()
               </div>
     
               <div class="hidden sm:block w-max h-max">
-                <img src="/js.png" alt="" class="w-auto h-[10rem]" />
+                <img src="/logo.png" alt="" class="w-auto h-[10rem]" />
               </div>
             </div>
     

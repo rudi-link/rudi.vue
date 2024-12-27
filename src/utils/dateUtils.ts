@@ -22,7 +22,7 @@ export function formatDate(date: Date): string {
   return date.toISOString().split('T')[0];
 }
 
-export function getAvailableYears(contributions: { createdAt: string }[]): number[] {
+export function getAvailableYears(contributions: { createdAt: string }[] | undefined): number[] {
   const years = new Set<number>();
   contributions?.forEach(contribution => {
     const year = new Date(contribution.createdAt).getFullYear();

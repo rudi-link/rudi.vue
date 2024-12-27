@@ -1,21 +1,25 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
+// @ts-ignore
 import ContributionCell from './ContributionCell.vue';
+// @ts-ignore
 import YearSelector from './YearSelector.vue';
+// @ts-ignore
 import MonthLabels from './MonthLabels.vue';
 import { generateDatesForYear, getContributionLevel, getAvailableYears } from '../utils/dateUtils';
-import type { Contribution, ContributionDay } from '../types/contribution';
+import type { ContributionDay } from '../types/contribution';
 
-const props = defineProps<{
-  contributions: { createdAt: string; }[]
+const {contributions, title = "cliks"} = defineProps<{
+  contributions?: { createdAt: string; }[],
+  title?: string
 }>();
 
 const selectedYear = ref(new Date().getFullYear());
 
-const availableYears = computed(() => getAvailableYears(props.contributions));
+const availableYears = computed(() => getAvailableYears(contributions));
 
 // Watch for changes in contributions to update selectedYear if needed
-watch(() => props.contributions, (newContributions) => {
+watch(() => contributions, (newContributions) => {
   const years = getAvailableYears(newContributions);
   if (!years.includes(selectedYear.value)) {
     selectedYear.value = years[0] || new Date().getFullYear();
@@ -23,7 +27,7 @@ watch(() => props.contributions, (newContributions) => {
 }, { deep: true });
 
 const filteredContributions = computed(() => {
-  return props.contributions?.filter(contribution => 
+  return contributions?.filter(contribution => 
     new Date(contribution.createdAt).getFullYear() === selectedYear.value
   );
 });
@@ -73,7 +77,7 @@ const totalContributions = computed(() =>
 <template>
   <div class="contribution-graph">
     <div class="graph-header">
-      <h2>{{ totalContributions }} clicks in {{ selectedYear }}</h2>
+      <h2>{{ totalContributions }} {{title}} in {{ selectedYear }}</h2>
       <YearSelector
         v-model="selectedYear"
         :years="availableYears"
@@ -98,7 +102,8 @@ const totalContributions = computed(() =>
                 :date="day.date"
               />
             </div>
-        </div></div>
+        </div>
+      </div>
     </div>
     </div>
   </div>

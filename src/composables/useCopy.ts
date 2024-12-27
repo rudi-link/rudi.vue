@@ -1,4 +1,5 @@
 import { ref } from "vue";
+import { toast } from 'vue3-toastify';
 
 export default function useCopy() {
     const copied = ref<boolean>(false);
@@ -6,7 +7,12 @@ export default function useCopy() {
 
     const copy = async (text: string)  => {
         try {
-            await navigator.clipboard.writeText(text);
+            await navigator.clipboard.writeText(text)
+            .then(() => {
+                toast("copied !", {
+                    autoClose: 500,
+                });
+            });
             copied.value = true;
             copyError.value = null;
         } catch (error) {

@@ -1,7 +1,7 @@
 <script setup lang="js">
 import LoadGlobal from './components/LoadGlobal.vue';
 import globalLoad from './store/load-global';
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import 'vue3-toastify/dist/index.css';
 
 const load = globalLoad()
 </script>

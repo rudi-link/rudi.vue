@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
+// @ts-ignore
 import Layout from "../components/Layout.vue";
 import { getLink } from "../api/link";
-import { TLinkDt, TTag } from "../types";
+import { TLinkDt } from "../types";
 import { LinkIcon } from "@heroicons/vue/24/solid";
+// @ts-ignore
 import ClickDetails from "../components/ClickDetails.vue";
 import { useQueryParams } from "../composables/useQueryParams";
 

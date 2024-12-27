@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { TLinkDt, TTagDt } from "../types";
-import { CChartLine } from "@coreui/vue-chartjs";
-import Contribution from "./Contribution.vue";
 import useCopy from "../composables/useCopy";
 import { api } from "../api";
 import { ClipboardDocumentCheckIcon } from "@heroicons/vue/24/solid";
-import { formatdAte } from "../utils";
+// @ts-ignore
 import ContributionGraph from "./ContributionGraph.vue";
 // import ApexCharts from 'apexcharts'
 // import Chart from "./Chart.vue";
@@ -27,7 +25,7 @@ const tag = computed<TTagDt | undefined>(() =>
 
 <template>
   <div
-    class="absolute flex justify-center w-full h-full inset-0 backdrop-blur-sm bg-black/20 overflow-hidden"
+    class="absolute z-30 flex justify-center w-full h-full inset-0 backdrop-blur-sm bg-black/20 overflow-hidden"
   >
     <div class="w-[40rem] h-full p-3 side">
       <div class="flex flex-col gap-7 w-full h-full p-5 rounded-lg bg-white">

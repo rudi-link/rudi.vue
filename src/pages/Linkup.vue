@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
+// @ts-ignore
 import Layout from "../components/Layout.vue";
+// @ts-ignore
 import LinkupIndex from "../components/LinkupIndex.vue";
 import { useQueryParams } from "../composables/useQueryParams";
+// @ts-ignore
 import NewLinkup from "../components/NewLinkup.vue";
 import useAuth from "../store/auth";
 
@@ -16,7 +19,7 @@ const new_ = computed(() => getQueryParam("new"));
 <template>
   <Layout with-profile>
     <template #main>
-      <div class="flex flex-col flex-grow gap-10 h-full">
+      <div class="flex flex-col flex-grow gap-10 h-full md:pr-10">
         <div
           class="flex justify-between items-center w-full h-max py-5 px-6 rounded-xl bg-[#3e1758cc] text-white"
         >
@@ -45,7 +48,7 @@ const new_ = computed(() => getQueryParam("new"));
           </div>
 
           <div class="hidden sm:block w-max h-max">
-            <img src="/js.png" alt="" class="w-auto h-[10rem]" />
+            <img src="/logo2.png" alt="" class="w-auto h-[10rem]" />
           </div>
         </div>
 

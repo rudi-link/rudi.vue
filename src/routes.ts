@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from "vue-router";
 import Login from "./pages/Login.vue";
+// @ts-ignore
 import Home from "./pages/Home.vue";
 import Linkup from "./pages/Linkup.vue";
 import LinkupDetails from "./pages/LinkupDetails.vue";
