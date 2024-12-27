@@ -1,1 +1,1 @@
-export const api = 'http://localhost:2005'
+export const api = 'https://rudi-api.onrender.com'
