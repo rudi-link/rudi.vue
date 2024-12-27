@@ -11,11 +11,10 @@ const useAuth = defineStore("auth", () => {
   const authenticate = async () => {
     await auth()
       .then((res) => {
-        console.log(res);
-
         user.value = res
       })
       .catch(() => {
+        localStorage.removeItem("token")
         push({ name: "login" })
       })
   }

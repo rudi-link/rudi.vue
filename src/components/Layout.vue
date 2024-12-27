@@ -3,9 +3,9 @@
 import Nav from "../components/Nav.vue";
 import { useQueryParams } from "../composables/useQueryParams";
 import useAuth from "../store/auth";
-import { RocketLaunchIcon } from "@heroicons/vue/24/solid";
 // @ts-ignore
 import Profile from "./modals/Profile.vue";
+import { RouterLink } from "vue-router";
 
 const { getQueryParam } = useQueryParams();
 
@@ -34,25 +34,42 @@ const { withProfile = false } = defineProps<{ withProfile?: boolean }>();
         </div>
 
         <div class="flex items-center gap-4">
-          <div class="flex items-center gap-3 sm:p-2 rounded-full sm:bg-white">
-            <div class="flex items-center gap-3">
+          <div class="md:hidden flex items-center gap-3 sm:p-2 rounded-full sm:bg-white">
+            <div class="flex items-center gap-3 bg-white p-2 rounded-2xl">
               <img src="/mr.js.png" class="w-5 h-5 rounded-full" />
-              <div class="hidden sm:flex flex-col">
+              <div class="flex flex-col">
                 <div class="font-bold text-xs">Developer</div>
               </div>
             </div>
           </div>
-          <div class="w-8 h-8 p-2 rounded-2xl bg-white shadow-sm">
-            <RocketLaunchIcon class="w-full h-full blip" />
-          </div>
-          <div class="w-8 h-8 rounded-2xl bg-white shadow-sm">
-            <i class="w-full h-full p-3" />
-          </div>
-          <RouterLink to="" class="p-1 rounded-full bg-white">
+          <RouterLink to="/linkup" class="hidden md:inline w-8 h-8 p-2 rounded-2xl bg-white shadow-sm">
+            <img src="/linkup.svg" class="w-4 h-4" />
+          </RouterLink>
+          <RouterLink to="/analytic" class="hidden md:inline w-8 h-8 p-2 rounded-2xl bg-white shadow-sm">
+            <img src="/analytic.svg" class="w-4 h-4" />
+          </RouterLink>
+          <button title="deconnexion ?" class="btn border-none outline-none hover:bg-transparent bg-transparent p-0 ml-2" onclick="my_modal_1.showModal()">
+            <img src="/logout.svg" class="w-[1.3rem] h-[1.3rem]" />
+          </button>
+          <dialog id="my_modal_1" class="modal">
+            <div class="modal-box text-white">
+              <h3 class="text-lg font-bold">Logout 🥺</h3>
+              <p class="py-4">Are you sure to logout yet?</p>
+              <div class="modal-action">
+                <RouterLink to="/login" onclick="localStorage.removeItem('token')">
+                  <button class="btn ">deconnect</button>
+                </RouterLink>
+                <form method="dialog">
+                  <button class="btn ">cancel</button>
+                </form>
+              </div>
+            </div>
+          </dialog>
+          <RouterLink to="" class="md:hidden inline p-1 rounded-full bg-white">
             <img
               :src="authStore?.user?.avatar"
               alt=""
-              class="w-10 h-10 rounded-full"
+              class="w-8 h-8 rounded-full"
             />
           </RouterLink>
         </div>

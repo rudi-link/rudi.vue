@@ -42,6 +42,10 @@ const submit = async () => {
 }
 
 onMounted(() => {
+    if(localStorage.getItem("token")){
+        nav("/")
+        return
+    }
     const taps = document.querySelectorAll<HTMLDivElement>('.tap');
     taps.forEach((tap) => {
         tap.addEventListener('mousedown', () => {
