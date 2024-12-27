@@ -12,7 +12,7 @@ authStore.authenticate()
 <template>
     <Layout with-profile>
         <template #main>
-            <div class="flex flex-col flex-grow gap-5 h-full">
+            <div class="flex flex-col flex-grow gap-5 h-full md:pr-14">
                 <div class="flex justify-between w-full">
                     <div class="text-2xl font-bold text-neutral-800">Features</div>
                     <button class="text-sm italic underline">hide ></button>
