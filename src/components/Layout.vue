@@ -5,7 +5,14 @@ import { useQueryParams } from "../composables/useQueryParams";
 import useAuth from "../store/auth";
 // @ts-ignore
 import Profile from "./modals/Profile.vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
+
+const { push: nav } = useRouter()
+
+const logout = () => {
+  localStorage.removeItem('token')
+  nav('/login')
+}
 
 const { getQueryParam } = useQueryParams();
 
@@ -56,9 +63,7 @@ const { withProfile = false } = defineProps<{ withProfile?: boolean }>();
               <h3 class="text-lg font-bold">Logout 🥺</h3>
               <p class="py-4">Are you sure to logout yet?</p>
               <div class="modal-action">
-                <RouterLink to="/login" onclick="localStorage.removeItem('token')">
-                  <button class="btn ">deconnect</button>
-                </RouterLink>
+                <button class="btn " v-on:click="logout()">deconnect</button>
                 <form method="dialog">
                   <button class="btn ">cancel</button>
                 </form>
