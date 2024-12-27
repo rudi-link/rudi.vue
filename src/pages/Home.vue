@@ -19,7 +19,7 @@ authStore.authenticate()
                 </div>
 
                 <div class="flex md:flex-nowrap flex-wrap gap-3 w-full h-max">
-                    <RouterLink
+                    <div
                         class="flex flex-col items-center gap-4 px-3 py-4 md:w-[35%] w-full h-44 rounded-lg bg-indigo-50 border-2 text-black/80">
                         <div class="w-10 h-10 p-2 rounded-full bg-white shadow-sm">
                             <RocketLaunchIcon class="w-full h-full blip" />
@@ -28,7 +28,7 @@ authStore.authenticate()
                         <p class="text-center text-sm">
                             Share your <b>link</b>, see <b>visitor</b> of your website
                         </p>
-                    </RouterLink>
+                    </div>
                     <RouterLink to="/linkup"
                         class="flex flex-col md:w-[35%] w-full h-44 hover:border-none rounded-lg shadow hover:shadow-lg bg-indigo-50 transition-all overflow-hidden cardo">
                         <div class="flex items-center justify-center gap-8 w-full h-full">
